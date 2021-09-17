@@ -7,7 +7,7 @@
     
     <!-- list entities here -->
     
-	 <class>com.skilldistillery.jpa.entities.User</class>
+	 <class>com.skilldistillery.jpacrud.entities.SpaceAlien</class>
 
 	 
     <!-- end list entities  -->
