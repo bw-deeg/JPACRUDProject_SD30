@@ -1,1 +1,2 @@
 rootProject.name = 'BootSpaceAliens_SD30'
+includeFlat 'JPASpaceAliens'
