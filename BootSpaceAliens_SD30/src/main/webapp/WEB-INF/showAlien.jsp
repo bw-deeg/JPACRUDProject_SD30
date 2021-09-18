@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/styles.css">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/styles.css">
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
 <body>
 
@@ -20,18 +21,18 @@
 		<input type="text" name="name" value="${spaceAlien.name}"><br><br>
 		</li><li>
 	 <label for="language">Language:</label><br>
-		<input type="text" name="language" ><br><br>
+		<input type="text" name="language" value=${spaceAlien.language }><br><br>
 		</li><li>
 	 <label for="landOfOrigin">Origin:</label><br>
-		<input type="text" name="landOfOrigin" ><br><br>
+		<input type="text" name="landOfOrigin" value=${spaceAlien.landOfOrigin } ><br><br>
 		</li><li>
-	 <label for="image">URL:</label><br>
-		<input type="text" name="landOfOrigin" ><br><br>
+	 <label for="image">Image:</label><br>
+		<img src="${spaceAlien.image }"><br><br>
 		</li><li>
 	 <label for="characteristic">Feature:</label><br>
-		<input type="text" name="characteristic" ><br><br>
+		<input type="text" name="characteristic" value="${spaceAlien.characteristic }" ><br><br>
 		</li>
-		</ul>
+	</ul>
 		
 		
   		<input type="submit" value="Submit">
