@@ -2,9 +2,11 @@ package com.skilldistillery.jpacrud.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.jpacrud.data.SpaceAlienDAOImpl;
 import com.skilldistillery.jpacrud.entities.SpaceAlien;
@@ -20,20 +22,45 @@ public class SpaceAlienController {
 	}
 	
 	@RequestMapping(path="getAlien.do", params= {"id","name"}, method=RequestMethod.GET)
-	public ModelAndView get(int id) {
+	public ModelAndView get(Integer id, String name) {
 		ModelAndView mv = new ModelAndView();
-		SpaceAlien spaceAlien = dao.findById(id);
-		mv.addObject("spaceAlien", spaceAlien);
-		mv.setViewName("showAlien");
+		SpaceAlien spaceAlien = null;
+		if (id != null) {
+			spaceAlien = dao.findById(id);
+		} else if (name != null && !name.isEmpty()) {
+			spaceAlien = dao.findByName(name);
+		}
+		if (spaceAlien != null) {
+			mv.addObject("spaceAlien", spaceAlien);
+			mv.setViewName("showAlien");
+		} else {
+			mv.setViewName("error");
+		}
 		return mv;
 	}
 	
-	@RequestMapping(path="update.do", params="id", method=RequestMethod.POST)
-	public ModelAndView update(SpaceAlien sa) {
+	@RequestMapping(path="update.do")
+	public ModelAndView update(SpaceAlien sa, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("showAlien");
+		sa = dao.update(sa.getId() , sa);
+		redir.addFlashAttribute("spaceAlien", sa);    //add to model for next request
+	    mv.setViewName("redirect:alienUpdated.do"); 
 		return mv;
 	}
+	
+	@RequestMapping(path="add.do")
+	public ModelAndView add(SpaceAlien sa, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		sa = dao.create(sa);
+		redir.addFlashAttribute("spaceAlien", sa);    //add to model for next request
+		mv.setViewName("redirect:alienUpdated.do"); 
+		return mv;
+	}
+	
+	@RequestMapping(path="alienUpdated.do", method=RequestMethod.GET)
+	public String showAlien(Model model) {
+		return "confirmation";
+	}
+
 
 }

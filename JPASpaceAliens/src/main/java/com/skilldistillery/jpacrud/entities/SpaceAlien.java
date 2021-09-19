@@ -28,11 +28,24 @@ public class SpaceAlien {
 	public SpaceAlien() {}
 	
 	public SpaceAlien(String name, String language, String image) {
-		super();
 		this.name = name;
 		this.language = language;
 		this.image = image;
 	}
+	
+	public SpaceAlien(String name, String language, String landOfOrigin, String characteristic) {
+		this.name = name;
+		this.language = language;
+		this.landOfOrigin = landOfOrigin;
+		this.characteristic = characteristic;
+	}
+	
+	public SpaceAlien(String name, String language, String landOfOrigin, String image, String characteristic) {
+		this(name, language, image);
+		this.landOfOrigin = landOfOrigin;
+		this.characteristic = characteristic;
+	}
+	
 
 	public int getId() {
 		return id;

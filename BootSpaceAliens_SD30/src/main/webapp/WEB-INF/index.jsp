@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Aliens</h1>
-	<form action="getAlien.do">
+	<form action="getAlien.do" method="get">
 	 <label for="id">Id:</label><br>
 		<input type="text" name="id" ><br><br>
 		

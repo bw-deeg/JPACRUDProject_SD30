@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<form class="form-style-7" action="update.do" method="post">
+	<form class="form-style-7" action="/" method="post">
 	<!-- omg, don't forget the id -->
 		<input type="hidden" name="id" value=${spaceAlien.id } ><br><br>
 		<ul>
@@ -33,7 +33,7 @@
 			</li>
 		</ul>
 		
-  		<input type="submit" value="Update">
+  		<input type="submit" value="Home">
 	</form>
 
 	<script type="text/javascript">

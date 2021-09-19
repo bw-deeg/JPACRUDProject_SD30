@@ -108,3 +108,11 @@
 	background: #6B9FFF;
 	color:#fff;
 }
+
+img.alien {
+	background-repeat: no-repeat;
+    width: auto; /*or your image's width*/
+    height: auto; /*or your image's height*/
+    margin: 0;
+    padding: 0;
+}
