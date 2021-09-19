@@ -21,7 +21,7 @@
 
 	<ul>
 		<c:forEach var="sa" items="${spaceAliens }">
-			<li><a href="getAlien.do?id=${sa.id}&name=${sa.name}"> ${sa.name }  ${sa.landOfOrigin }</a></li>
+			<li><a href="getAlien.do?id=${sa.id}&name=${sa.name}"> ${sa.name }</a></li>
 		</c:forEach>
 	</ul>
 </body>
