@@ -47,4 +47,12 @@ public class SpaceAlienDAOImpl implements SpaceAlienDAO{
 		return sa.isEmpty()? null : sa.get(0);
 	}
 
+	@Override
+	public List<SpaceAlien> getEm() {
+		String jpql = "SELECT sa FROM SpaceAlien sa";
+		List<SpaceAlien> sa = em.createQuery(jpql, SpaceAlien.class)
+				.getResultList();
+		return sa.isEmpty()? null : sa;
+	}
+
 }

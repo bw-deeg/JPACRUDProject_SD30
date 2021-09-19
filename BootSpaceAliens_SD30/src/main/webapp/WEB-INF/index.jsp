@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 </head>
 <body>
 <h1>Aliens</h1>
@@ -17,5 +18,11 @@
 		
   		<input type="submit" value="Submit">
 	</form>
+
+	<ul>
+		<c:forEach var="sa" items="${spaceAliens }">
+			<li><a href="getAlien.do?id=${sa.id}&name=${sa.name}"> ${sa.name }  ${sa.landOfOrigin }</a></li>
+		</c:forEach>
+	</ul>
 </body>
 </html>

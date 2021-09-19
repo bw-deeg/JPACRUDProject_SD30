@@ -1,5 +1,8 @@
 package com.skilldistillery.jpacrud.controllers;
 
+import java.util.List;
+
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +20,19 @@ public class SpaceAlienController {
 	private SpaceAlienDAOImpl dao;
 	
 	@RequestMapping(path= {"/", "index.do"})
-	public String index() {
-		return "index";
+	public ModelAndView index(Model model) {
+		
+		ModelAndView mv = new ModelAndView();
+		List<SpaceAlien> spaceAliens;
+		spaceAliens = dao.getEm();
+		
+		if (spaceAliens != null && !spaceAliens.isEmpty()) {
+			mv.addObject("spaceAliens", spaceAliens);
+			mv.setViewName("index");
+		} else {
+			mv.setViewName("error");
+		}
+		return mv;
 	}
 	
 	@RequestMapping(path="getAlien.do", params= {"id","name"}, method=RequestMethod.GET)
