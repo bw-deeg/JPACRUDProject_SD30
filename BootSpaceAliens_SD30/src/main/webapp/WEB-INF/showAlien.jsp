@@ -33,7 +33,8 @@
 			</li>
 		</ul>
 		
-  		<input type="submit" value="Update">
+  		<input type="submit" name="action" value="Update">
+  		<input type="submit" name="action" value="Home">
 	</form>
 
 	<script type="text/javascript">

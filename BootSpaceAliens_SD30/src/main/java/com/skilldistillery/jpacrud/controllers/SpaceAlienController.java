@@ -54,11 +54,15 @@ public class SpaceAlienController {
 	}
 	
 	@RequestMapping(path="update.do")
-	public ModelAndView update(SpaceAlien sa, RedirectAttributes redir) {
+	public ModelAndView update(SpaceAlien sa, String action, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
-		sa = dao.update(sa.getId() , sa);
-		redir.addFlashAttribute("spaceAlien", sa);    //add to model for next request
-	    mv.setViewName("redirect:alienUpdated.do"); 
+		if (action.equals("Update") ) {
+			sa = dao.update(sa.getId() , sa);
+			redir.addFlashAttribute("spaceAlien", sa);    //add to model for next request
+		    mv.setViewName("redirect:alienUpdated.do"); 
+		} else {
+			mv.setViewName("redirect:index.do"); 
+		}
 		return mv;
 	}
 	
